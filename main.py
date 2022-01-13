@@ -68,10 +68,11 @@ class Launcher:
             self.mongoDB.insert_one(db_info["collection"],risk_data)
             logging.info(f"插入【{date['date']}】疫情中高风险地区数据")
         elif region_digest != exist_data["digest"]:
+            risk_data.update({"op_time":datetime.now().strftime('%Y-%m-%d %H:%M:%S')})
             self.mongoDB.update_one(db_info["collection"],date,{"$set":risk_data})
             logging.info(f"更新【{date['date']}】疫情中高风险地区数据")
         else:
-            logging.info("数据相同,skip")
+            logging.info("爬取数据与数据库中数据相同,skip")
 
     @staticmethod
     def msg_digest(content: str) -> str:
