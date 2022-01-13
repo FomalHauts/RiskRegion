@@ -51,8 +51,10 @@ db_info = {
 ```
 1、git clone https://github.com/FomalHauts/RiskRegion.git
 2、cd RiskRegion
-3、修改config.py中的配置
-3、python main.py
+3、pip install -r requirements.txt
+4、修改config.py中的配置
+5、修改main.py中apscheduler中add_job里start_date
+5、python main.py
 ```
 
 # 说明
